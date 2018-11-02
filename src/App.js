@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styled, {injectGlobal, keyframes, css} from "styled-components";
+import styled, {injectGlobal, keyframes, css, ThemeProvider} from "styled-components";
+import theme from "./theme";
 
 injectGlobal`
     body {
@@ -11,12 +12,14 @@ injectGlobal`
 class App extends Component {
     render() {
         return (
-            <Container>
-                <Button>Hello</Button>
-                <Button danger>Hello</Button>
-                <Anchor href="http://google.com">Go to Google</Anchor>
-                <Input placeholder="hello" />
-            </Container>
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <Button>Hello</Button>
+                    <Button danger>Hello</Button>
+                    <Anchor href="http://google.com">Go to Google</Anchor>
+                    <Input placeholder="hello" />
+                </Container>
+            </ThemeProvider>
         );
     }
 }
@@ -53,7 +56,7 @@ const Button = styled.button`
     &:focus {
         outline: none;
     }
-    background-color: ${props => (props.danger ? "#e74c3c" : "#2ecc71")};
+    background-color: ${props => (props.danger ? props.theme.dangerColor : props.theme.successColor)};
     ${props => {
         if (props.danger) {
             return `animation: ${rotation} 2s linear infinite`;
