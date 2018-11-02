@@ -18,23 +18,38 @@ class App extends Component {
                     <Button danger>Hello</Button>
                     <Anchor href="http://google.com">Go to Google</Anchor>
                     <Input placeholder="hello" />
+
+                    <Form />
                 </Container>
             </ThemeProvider>
         );
     }
 }
 
-const awesomeCard = css`
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
+const Card = styled.div`
+  background-color: red;
 `;
+
+const Form = () => (
+    <Card>
+        <Button>Hello</Button>
+    </Card>
+)
 
 const Container = styled.div`
     height: 100vh;
     width: 100%;
     background-color: pink;
+    ${Card} {
+        background-color: blue;
+    }
+`;
+
+const awesomeCard = css`
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
 `;
 
 const Input = styled.input.attrs({
